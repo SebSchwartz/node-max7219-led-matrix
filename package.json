@@ -1,0 +1,29 @@
+{
+  "name": "node-max7219-led-matrix",
+  "version": "1.0.0",
+  "description": "Node max7216 led matrix interfacing for raspberry pi ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebSchwartz/node-max7219-led-matrix.git"
+  },
+  "keywords": [
+    "pi",
+    "max7216",
+    "raspberry",
+    "led",
+    "matrix"
+  ],
+  "author": "Sebastien Schwartz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SebSchwartz/node-max7219-led-matrix/issues"
+  },
+  "homepage": "https://github.com/SebSchwartz/node-max7219-led-matrix#readme",
+  "dependencies": {
+    "spi": "~0.2.0"
+  }
+}
