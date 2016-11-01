@@ -94,38 +94,39 @@ max7219.prototype.showMessage = function(text, font){
     if(typeof font === 'undefined'){
         font = DEFAULT_FONT;
     }
-
-    //
-    for(var i=0; i<text.length; i++){
-		ascii_code = text[i];
-		letter(ascii_code);
-	}
-
-
-    let asciiCode = this._ascii(letter);
-    if(asciiCode>256 || asciiCode<0){
-        throw 'Bad letter: ' + letter;
-    }
     
-    var col = MAX7219_REG_DIGIT0;
-    var arr = font[asciiCode];
-    for(var idx in arr){
-        if(col > MAX7219_REG_DIGIT7){
-            this.clear();
+    for(var i=0; i<text.length; i++){
+		let letter = text[i];
+		let asciiCode = this._ascii(letter);
+        if(asciiCode>256 || asciiCode<0){
+            throw 'Bad letter: ' + letter;
         }
-        this._write(col, arr[idx]);
-        col++;
+        
+        var col = MAX7219_REG_DIGIT0;
+        var arr = font[asciiCode];
+        for(var idx in arr){
+            if(col > MAX7219_REG_DIGIT7){
+                this.clear();
+            }
+            this._write(col, arr[idx]);
+            col++;
+        }
+        this._sleep(500);
+	}
+    this.clear();
+
+}
+
+max7219.prototype._sleep = function(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
     }
+  }
 }
 
 module.exports.max7219 = max7219;
-
-
-//TODO show message
-
-
-           
-
 
 // Font imported from https://github.com/rm-hull/max7219
 

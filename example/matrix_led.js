@@ -20,6 +20,8 @@ max7219.letter('A',max7219LedMatrix.LCD_FONT);
 sleep(1000);
 max7219.letter('A',max7219LedMatrix.SINCLAIR_FONT);
 
+sleep(1000);
+max7219.showMessage('Test');
 
 
 function sleep(milliseconds) {
